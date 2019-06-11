@@ -1,4 +1,4 @@
-This files contain Dummy SQL data in order to simulate transactions.
+This files contain Dummy SQL data in order to simulate a transaction database.
 
 How to run code:
 
