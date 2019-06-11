@@ -1,0 +1,146 @@
+USE sql_store;
+
+-- SELECT 
+-- 	last_name, 
+-- 	first_name, 
+-- 	points, 
+--     points * 10 + 100 As 'discount factor'
+-- FROM  customers
+-- SELECT DISTINCT state
+-- FROM customers
+-- SELECT name, unit_price, unit_price * 1.1 As new_price
+-- FROM products
+-- SELECT * 
+-- FROM products
+-- where quantity_in_stock IN (49,38,72)
+-- SELECT *
+-- FROM customers
+-- where birth_date between '1990/01/01' AND '2000/01/01'
+-- SELECT 
+--     *
+-- FROM
+--     customers
+-- WHERE
+--     address LIKE '%trail%'
+--         OR address LIKE '%AVENUE%'; 
+-- SELECT 
+--     *
+-- FROM
+--     customers
+-- WHERE
+--     phone LIKE '%9';
+-- select *
+-- from customers
+-- where first_name regexp 'Elka|ambur'
+-- SELECT 
+--     *
+-- FROM
+--     customers
+-- WHERE
+--     last_name REGEXP 'ey$|on$'
+-- SELECT 
+-- 	* 
+-- FROM
+--     customers
+-- WHERE
+--     last_name REGEXP '^my|[S]E'
+
+-- SELECT 
+-- 	* 
+-- FROM
+--     customers
+-- WHERE
+--     last_name REGEXP '[B]r|[b]u'
+-- SELECT * 
+-- FROM sql_store.orders
+-- Where shipped_date is null or shipper_id is null
+-- SELECT * 
+-- FROM sql_store.order_items
+-- Where order_id = 2 
+-- order by (quantity * unit_price)
+-- SELECT * 
+-- FROM sql_store.customers
+-- order by points desc
+-- limit 3
+-- -- 
+-- Select order_id, oi.product_id, p.name, quantity, oi.unit_price
+-- From order_items oi
+-- Join products p
+-- on oi.product_id = p.product_id
+-- Select p.date, 
+--        p.invoice_id, 
+--        p.amount, 
+--        cl.name,
+--        py.name
+-- From payments p
+-- Join clients cl
+-- on p.client_id = cl.client_id
+-- Join payment_methods py
+-- on p.payment_method = py.payment_method_id
+-- Select p.product_id, p.name, oi.quantity
+-- From products p
+-- Left Join order_items oi
+-- on p.product_id = oi.product_id
+
+-- select o.order_date, o.order_id, c.first_name, s.name, od.name
+-- from orders o
+-- join customers c
+-- on o.customer_id = c.customer_id
+-- left join shippers s
+-- on o.shipper_id = s.shipper_id 
+-- join order_statuses od
+-- on o.status = od.order_status_id
+
+-- select p.date, p.amount, c.name 
+-- from payments p
+-- join clients c
+-- using (client_id)
+
+-- select p.amount, c.name	
+-- from payments p
+-- cross join clients c
+-- implicit cross join
+-- select * 
+-- from shippers, products
+-- 
+-- explicit cross join
+-- select * 
+-- from shippers
+-- cross join products
+-- select c.customer_id, c.first_name, c.points, 'Bronze'
+-- from customers c
+-- where c.points < 2000
+-- Union
+-- select c.customer_id, c.first_name, c.points, 'Silver'
+-- from customers c
+-- where c.points Between 2000 And 3000
+-- Union
+-- select c.customer_id, c.first_name, c.points, 'Gold'
+-- from customers c
+-- where c.points > 3000
+-- order by points desc
+
+-- insert into products (name,
+--                       quantity_in_stock,
+--                       unit_price)
+-- Values('swiffer', 
+-- 		10, 
+-- 		1.5)
+
+-- create table invoices_archived As
+-- select i.invoice_id, i.number, c.name, i.invoice_total, i.invoice_date,  i.payment_date, i.due_date   
+-- from invoices i
+-- join clients c
+-- using (client_id)
+-- where payment_date is not null 
+-- update customers c 
+-- set
+-- 	c.points = c.points + 50
+-- where c.birth_date < '1990-01-01'
+-- update orders 
+-- set comments = 'Gold'
+-- where customer_id in
+-- 	(select customer_id
+-- 	from customers c 
+-- 	where c.points > 3000) 
+-- 
