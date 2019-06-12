@@ -1,5 +1,7 @@
 This files contain Dummy SQL data in order to simulate a transaction database.
 
+Why did I make this? I set out to learn more about Mysql as I believe that it is a very important skill for software engineers
+
 How to run code:
 
 Make sure that you have Mysql installed on your pc, with the UTF-8 configuration
